@@ -4,48 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Favorite Person ❤️</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #fff0f3;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            overflow: hidden;
-        }
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.2);
-            max-width: 400px;
-            z-index: 10;
-        }
-        h1 { color: #ff4d6d; font-size: 1.8rem; margin-bottom: 10px; }
-        p { color: #590d22; font-size: 1.1rem; line-height: 1.5; }
-        .buttons { margin-top: 30px; height: 50px; position: relative; }
-        button {
-            padding: 12px 25px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-        #yesBtn { background-color: #ff4d6d; color: white; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); }
-        #noBtn { background-color: #ffb3c1; color: white; position: absolute; }
-        img { width: 150px; margin-bottom: 10px; }
-        .heart { position: absolute; color: #ff4d6d; animation: float 3s linear infinite; }
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-    </style>
+        <style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        /* This adds the red hearts background */
+        background-color: #ff4d6d;
+        background-image: url("https://www.transparenttextures.com/patterns/hearts.png");
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        overflow: hidden;
+    }
+    .card {
+        background: rgba(255, 255, 255, 0.95); /* Makes the white card look clean */
+        padding: 30px;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        z-index: 10;
+        border: 4px solid #ffb3c1;
+    }
+    h1 { color: #ff4d6d; font-size: 1.8rem; margin-bottom: 10px; }
+    p { color: #590d22; font-size: 1.1rem; line-height: 1.5; }
+    .buttons { margin-top: 30px; height: 50px; position: relative; }
+    button {
+        padding: 12px 25px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+    #yesBtn { background-color: #ff4d6d; color: white; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); }
+    #noBtn { background-color: #ffb3c1; color: white; position: absolute; }
+    img { width: 150px; border-radius: 15px; margin-bottom: 10px; }
+    .heart { position: absolute; color: #ffffff; animation: float 3s linear infinite; font-size: 20px;}
+    @keyframes float {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+</style>
+    
 </head>
 <body>
 
