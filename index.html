@@ -4,89 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Favorite Person ❤️</title>
-        <style>
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        /* This adds the red hearts background */
-        background-color: #ff4d6d;
-        background-image: url("https://www.transparenttextures.com/patterns/hearts.png");
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-align: center;
-        overflow: hidden;
-    }
-    .card {
-        background: rgba(255, 255, 255, 0.95); /* Makes the white card look clean */
-        padding: 30px;
-        border-radius: 25px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        max-width: 400px;
-        z-index: 10;
-        border: 4px solid #ffb3c1;
-    }
-    h1 { color: #ff4d6d; font-size: 1.8rem; margin-bottom: 10px; }
-    p { color: #590d22; font-size: 1.1rem; line-height: 1.5; }
-    .buttons { margin-top: 30px; height: 50px; position: relative; }
-    button {
-        padding: 12px 25px;
-        font-size: 1rem;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: 0.2s;
-    }
-    #yesBtn { background-color: #ff4d6d; color: white; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); }
-    #noBtn { background-color: #ffb3c1; color: white; position: absolute; }
-    img { width: 150px; border-radius: 15px; margin-bottom: 10px; }
-    .heart { position: absolute; color: #ffffff; animation: float 3s linear infinite; font-size: 20px;}
-    @keyframes float {
-        0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-    }
-</style>
-    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ff4d6d;
+            background-image: url("https://www.transparenttextures.com/patterns/hearts.png");
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 350px;
+            z-index: 10;
+            border: 4px solid #ffb3c1;
+        }
+        .slideshow-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 15px;
+            position: relative;
+        }
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 4px solid #ff4d6d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .profile-img.active { opacity: 1; }
+        h1 { color: #ff4d6d; font-size: 1.6rem; margin-bottom: 10px; }
+        p { color: #590d22; font-size: 1rem; line-height: 1.5; }
+        .buttons { margin-top: 30px; height: 50px; position: relative; width: 100%; }
+        button {
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #yesBtn { background-color: #ff4d6d; color: white; }
+        #noBtn { background-color: #ffb3c1; color: white; position: absolute; left: 50%; transform: translateX(-50%); }
+        .heart-float { position: absolute; color: #ffffff; animation: float 3s linear infinite; font-size: 20px;}
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
 
     <div class="card" id="quiz-card">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIycGZ4YmZ4ZzB4eGZ4ZzB4eGZ4ZzB4eGZ4ZzB4eGZ4ZzB4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/vO8F4fYK3YIn6/giphy.gif" alt="Cute Bear">
+        <div class="slideshow-container">
+            <img src="WA_1770013506461.jpeg" class="profile-img active">
+            <img src="WA_1770013509078.jpeg" class="profile-img">
+            <img src="WA_1770013517239.jpeg" class="profile-img">
+            <img src="WA_1770013519589.jpeg" class="profile-img">
+        </div>
         <h1>Renewal Notice! 🌹</h1>
-        <p>Your 1-year contract as <b>My Valentine</b> is up for renewal. Do you accept the terms and conditions (including infinite hugs)?</p>
+        <p>Your status as <b>Best Girlfriend</b> is up for renewal. Do you agree to another year of us? ❤️</p>
         <div class="buttons">
             <button id="yesBtn" onclick="success()">I AGREE! ❤️</button>
-            <button id="noBtn" onmouseover="moveButton()">Absolutely Not</button>
+            <button id="noBtn" onmouseover="moveButton()">No</button>
         </div>
     </div>
 
     <script>
+        // Slideshow Logic
+        let currentImg = 0;
+        const imgs = document.querySelectorAll('.profile-img');
+        setInterval(() => {
+            imgs[currentImg].classList.remove('active');
+            currentImg = (currentImg + 1) % imgs.length;
+            imgs[currentImg].classList.add('active');
+        }, 2000); // Changes photo every 2 seconds
+
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.position = 'fixed';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
         }
 
         function success() {
             document.getElementById('quiz-card').innerHTML = `
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2ZkbW13eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/Lp71UqhcHh40S8a0zg/giphy.gif">
-                <h1>Official Valentine! ❤️</h1>
-                <p>Contract signed! I love you so much, beautiful. I'm the luckiest guy to have you by my side. Get ready for a surprise soon! ✨</p>
+                <h1 style="font-size: 3rem;">🥰</h1>
+                <h1>Contract Signed! ❤️</h1>
+                <p>I love you so much! You're stuck with me for another year! ✨</p>
             `;
             setInterval(createHeart, 300);
         }
 
         function createHeart() {
             const heart = document.createElement('div');
-            heart.classList.add('heart');
+            heart.classList.add('heart-float');
             heart.innerHTML = '❤️';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 3000);
         }
